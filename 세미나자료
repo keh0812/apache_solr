@@ -1,0 +1,68 @@
+
+#	Apache Solr 개념
+  오픈소스 정보검색 라이브러리인 루씬의 엔터프라이즈 버전이다.
+
+#	Apache Solr 특징
+  엔터프라이즈 검색 서버인만큼 다양한 기능을 지원한다. 
+  기본적인 텍스트 검색, 다면적 검색, 실시간 인덱싱, 클러스터링, 데이터베이스 통합, 다양한 문서처리 및 검색, 솔라 분산 인덱싱 등의 기능을 지원하고 있다.
+
+-	Request Handler
+  사용자가 보내는 요청은 모두 Request Handler에 의해 처리된다. '검색(query)', '인덱스 수정(update)' 각각을 위한 RequestHandler가 존재한다.
+  REST API를 통해 solr에 요청을 보낼 때 URL 뒷부분이 s?query 혹은 s?update 인지에 따라 요청이 구분되고 각각의 핸들러에 요청이 전달된다.
+
+-	Search Component
+  검색엔진이 제공하는 전체 기능을 조금 세부적으로 나누면 검색, 오타교정, 분류 등과 같이 나눌 수 있다. 
+  각각의 일을 하는 모듈은 Java 프로젝트에서 각각의 클래스를 가진다. 이들 각각을 솔라 컴포넌트(Component)라 한다.
+  컴포넌트들은 Search Handler에 추가하여 사용하며 하나의 Search Handler에는 여러 컴포넌트들이 등록될 수 있다.
+
+-	Query Parser
+  사용자가 던진 쿼리(검색어, 검색 문장)을 파싱하여 검색엔진이 이해할 수 있는 방식으로 변경한다.
+  컴포넌트들은 Search Handler에 추가하여 사용하며 하나의 Search Handler에는 여러 컴포넌트들이 등록될 수 있다.
+
+- Response Writer
+  검색엔진이 찾은 결과를 가지고 출력 형식(XML, JSON, CSV 등)에 맞는 객체들을 생성하는 컴포넌트이다.
+
+-	Analyzer/Tokenizer
+  쿼리를 분석하고 공백을 기준으로 토크나이저(분리) 하는 모듈이다.
+
+-	Update Request Processor
+  사용자가 솔라에 인덱스 업데이트 요청을 보내면 update request processor가 이를 처리한다. 필드 혹은 문서를 추가, 삭제, 수정하는 등의 작업을 한다.
+
+#	Apache Solr 용어
+-	코어(core)
+  한대의 서버에 여러 주제의 인덱스가 각각 있을 수 있다. 코어는 하나의 인덱스를 가리킨다. 
+  예를들면 한 포털사이트에서 위치검색과 일반 웹문서 검색을 제공한다면 위치 색인, 웹문서 색인을 따로 가질 수 있다. 이를 각각 코어라고 부른다.
+
+-	클러스터(Cluster)
+  하나 이상의 노드로 이루어진 가장 큰 시스템 단위(독립적인 형태로 유지되며, 한 서버를 여러대의 클러스터가 구성할 수 있으며, 여러 대의 서버가 한 클러스터를 구성할 수도 있다)
+
+-	스키마(Schema)
+  색인할 문서의 필드, 필드 타입 정의
+
+-	인덱스 복제(Index Replication)
+  마스터 인덱스의 전체 복사본을 하나 이상의 슬레이브 서버로 배포 및 업데이트하는 것(대규모 볼륨에 대한 분산 처리를 위해)
+
+-	샤드(Shard) 
+  데이터를 분산하여 저장하는 단위(인덱스를 조각내어 처리)
+
+#	Apache Solr 설정 파일
+-	solr.xml
+  솔라 클라우드를 이루는 솔라 인스턴스에 관한 설정 파일이다. 솔라 인스턴스가 코어를 로드하기 위해 이 파일을 참고한다.
+  참고 : https://solr.apache.org/guide/6_6/format-of-solr-xml.html
+
+-	solrconfig.xml
+  하나의 코어마다 가지고 있으며 코어에 관한 설정 내용이 들어있다. 코어가 사용할 컴포넌트 지정, 출력형식 지정, 사용할 인덱스, 메모리 사용 등의 정보들이 들어있다.
+
+-	Managed-schema.xml (각 core의 conf/ 디렉토리에 위치)
+  이전 버전의 Solr에서는 schema.xml 파일이었으나 명칭이 변경되었다. 코어의 인덱스가 가지는 필드, 타입 등에 관한 정의가 들어있다.
+
+  참고 : https://solr.apache.org/guide/6_6/overview-of-documents-fields-and-schema-design.html
+
+-	core.properties
+아래의 내용들이 들어있다.
+
+  •	코어 이름
+  •	코어 초기화에 사용될 설정 파일 경로 지정(기본값으로 solrconfig.xml)
+  •	코어가 사용할 schema 파일(기본값 schema.xml)
+  •	사용할 인덱스 파일의 경로
+

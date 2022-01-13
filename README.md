@@ -1,9 +1,9 @@
 # apache_solr
 아파치 솔라 (Apache Solr) :: 루씬의 검색 엔진의 색인과 검색을 위한 자바 라이브러리
 
-기존 bigdata project에서 Elasticsearch -> Solr로 대체한 프로젝트입니다.
-
+* 기존 bigdata project에서 Elasticsearch -> Solr로 대체한 프로젝트입니다.
 [이미지 자료는 시연을 위해 직접 만든 ppt의 일부입니다.]
+
 
 ## 1. Solr project 아키텍처
 ![image](https://user-images.githubusercontent.com/80734989/149249788-22e8248c-6c6e-49e5-9e28-0228c4759349.png)

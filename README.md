@@ -1,6 +1,6 @@
 # apache_solr_project
 
-* 기존 bigdata project에서 Elasticsearch -> Solr로 대체한 프로젝트
+* 기존 bigdata project에서 검색엔진을 Elasticsearch -> Solr로 대체한 프로젝트
 
 * [이미지 자료는 데모시연을 위해 직접 만든 ppt의 일부입니다.]
 

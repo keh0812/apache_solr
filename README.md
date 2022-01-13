@@ -1,9 +1,11 @@
 # apache_solr_project
-[아파치_솔라.docx](https://github.com/keh0812/apache_solr/files/7859222/_.docx)
 
 * 기존 bigdata project에서 Elasticsearch -> Solr로 대체한 프로젝트
 
 * [이미지 자료는 데모시연을 위해 직접 만든 ppt의 일부입니다.]
+
+* Solr 자료 정리 : [아파치_솔라.docx](https://github.com/keh0812/apache_solr/files/7859244/_.docx)
+
 
 
 ##	Apache Solr 

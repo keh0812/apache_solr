@@ -1,5 +1,5 @@
 # apache_solr_project
-
+[아파치_솔라.docx](https://github.com/keh0812/apache_solr/files/7859222/_.docx)
 
 * 기존 bigdata project에서 Elasticsearch -> Solr로 대체한 프로젝트
 

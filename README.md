@@ -5,6 +5,8 @@
 
 [이미지 자료는 시연을 위해 직접 만든 ppt의 일부입니다.]
 
+
+
 ## 1. Apache Solr 란?
 ![image](https://user-images.githubusercontent.com/80734989/149250488-e8504e39-1165-4bfd-8c9d-d8fd08d0a2d6.png)
 
